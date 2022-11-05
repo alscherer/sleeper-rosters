@@ -1,0 +1,48 @@
+
+
+How to:
+
+1. Get player pool
+	https://api.sleeper.app/v1/players/nfl/
+	- save page as json file
+	- don't try to highlight entire file and "insert" into new json - will take forever
+
+2. translate player pool to json
+	- parse_players.pl <player pool json file>
+
+2. Get owners
+	get_users.py -> today, league ID hard-coded in py. change to having league id in an input file that every app can use. 
+
+3. Get draft schedule
+	schedule & draft ID: https://api.sleeper.app/v1/league/<league_id>/drafts
+	xfl 2022 league id 787796366440124416
+	xfl 2022 draft id 787796366440124417 -> gives draft info https://api.sleeper.app/v1/draft/787796366440124417
+	
+4. Draft/Keeper results
+	draft results https://api.sleeper.app/v1/draft/787796366440124417/picks
+	--> I used this for keepers - save as json
+	
+
+4. Get rosters
+ 	-- Source URL = https://api.sleeper.app/v1/league/650130288072040448/rosters
+ 	-- Put the URL in the py file, run get_rosters.py & save to json file
+
+5. Get transactions
+	App will Download & parse all weekly transactions from
+         https://api.sleeper.app/v1/league/787796366440124416/transactions/<week #>
+    & save to a json file.
+	Set URL in app then Run get_transactions.
+
+6. Merge draft + transactions
+    TODO!!!
+
+6. Merge users, players & roster data 
+	merge_teams_and_rosters.py -o <writeable file for current rosters>
+
+7. Combine transactions
+	combine_transactions.py -o <writeable file for all transactions>
+    TODO:  Need to use merged transactions - draft + weekly
+
+
+
+
