@@ -4,7 +4,7 @@ I play in a "keeper auction" fantasy league where we need to keep track of each 
 
 I am new to Python so thought it might be a good exercise to use Python to invoke the Sleeper APIs, map players to owners/users, rosters and transactions and do the calculations I need.
 
-It needs plenty of cleanup work but it does what I want it to do.
+This needs plenty of cleanup but it does seem to do what I want it to do.
 When I get time, I will add unit testing, remove some hard-coded file references and better "pythonize" the code.
 I'll also create one master python file that runs them all.
 
