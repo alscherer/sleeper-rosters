@@ -4,7 +4,7 @@ I play in a "keeper auction" fantasy football league that we run on the Sleeper 
 
 I am new to Python so thought this would be an interesting way to learn Python & get data from the Sleeper APIs, then map players to users, rosters and transactions and do the calculations I need.
 
-This needs plenty of cleanup but does do what I wanted.
+This needs plenty of cleanup but does what I wanted.
 
 When I get time, I will add unit testing, remove some hard-coded file references and better "pythonize" the code. 
 I'll also create one master python file that runs them all.
