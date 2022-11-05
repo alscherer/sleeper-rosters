@@ -11,6 +11,7 @@ I'll also create one master python file that runs them all.
 I'm putting it here anyway to save my current, working versions and in case anyone stumbles on this and would like to use any of it.
 
 I built all of these using Python 3.9.  I ran them in the sequence noted below and then imported to Excel, which I sent to my league mates.
+I also attached the final JSON output loaded into Excel.
 
 =================================================
 
