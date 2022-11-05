@@ -1,15 +1,14 @@
 # sleeper-rosters
 
-I play in a "keeper auction" fantasy league where each player's keeper salary is 2x the prior year's salary or 5, whichever is higher.
-And that prior year salary is the highest price anyone paid for that player in the initial auction or on waivers.
+I play in a "keeper auction" fantasy league where we want to keep track of the highest price that player was assigned during the draft or in any waiver claim.
+It also helped me map players to rosters & owners/fantasy teams.
 
 I am new to Python so thought it might be a good exercise to use Python to invoke the Sleeper APIs, download the necessary data and do the calculations.
-I wanted it to be something I could easily update during the year to share with my leaguemates.
 
-If I get time, I will add unit testing, consolidate and better "pythonize" the code so I don't have to run it one at a time.
-I'm putting it here for now to save my updates and in case anyone stumbles on this and would like to do somethimg similar/better.
+If I get time, I will add unit testing, remove some hard-coded file references and better "pythonize" the code so I don't have to run it one at a time.
+But I'm putting it here anyway to save my current, working versions and in case anyone stumbles on this and would like to use any of it.
 
-I built all of these using Python 3.9.
+I built all of these using Python 3.9.  I ran them in the sequence noted below and then imported to Excel, which I sent to my league mates.
 
 =================================================
 
