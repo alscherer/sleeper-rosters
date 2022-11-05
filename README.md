@@ -1,6 +1,6 @@
 # sleeper-rosters
 
-I play in a "keeper auction" fantasy league where we want to keep track of each player's "salary," the highest price that the player was assigned during the draft or in any waiver claim during the season. 
+I play in a "keeper auction" fantasy league where we need to keep track of each player's "salary," i.e., the highest price that the player was assigned during the draft or in any waiver claim during the season. 
 
 I am new to Python so thought it might be a good exercise to use Python to invoke the Sleeper APIs, map players to owners/users, rosters and transactions and do the calculations I need.
 
