@@ -1,48 +1,61 @@
-oo
+# DONE Rosters  https://api.sleeper.app/v1/league/650130288072040448/rosters
+# DONE Users:  https://api.sleeper.app/v1/league/650130288072040448/users
+DONE COMBINE Rosters & Users to be readable - done
 
-How to:
+------------------------
+AFTER DRAFT:  https://api.sleeper.app/v1/draft/<draft_id>
+   All drafts for lg:  https://api.sleeper.app/v1/league/650130288072040448/drafts --> 2021 is 650130288072040449?
+   that draft https://api.sleeper.app/v1/draft/650130288072040449/picks
+1.  Save draft data to json file
 
-1. Get player pool
-	https://api.sleeper.app/v1/players/nfl/
-	- save page as json file
-	- don't try to highlight entire file and "insert" into new json - will take forever
+2. Run parse_draft.py -o <output file> 
+		to extract, prepare usable data
 
-2. translate player pool to json
-	- parse_players.pl <player pool json file>
+------------------------
+BEFORE SEASON
+1. Run get_users.py -o <output file> 
+		to get owners -> Save to ...data/2022/users.json
+     Ex:  "97088838635503616": {"display_name": "Tim_Terry", "team_name": "Vegas Vipers"}, 
 
-2. Get owners
-	get_users.py -> today, league ID hard-coded in py. change to having league id in an input file that every app can use. 
+------------------------
+AFTER DRAFT
+1. Download draft data from url, save as json - to data/2022/draft-2022.json
+	Ex: https://api.sleeper.app/v1/draft/650130288072040449/picks 
+	 Ex:  {"round":1,"roster_id":1,"player_id":"6794","picked_by":"378716407027937280","pick_no":1,"metadata":{"years_exp":"2","team":"MIN","status":"Active","sport":"nfl","slot":"1","position":"WR","player_id":"6794","number":"18","news_updated":"1646327726661","last_name":"Jefferson","injury_status":"","first_name":"Justin","amount":"10"},"is_keeper":false,"draft_slot":1,"draft_id":"787796366440124417"}
+2. Run parse_draft.py -o data/2022/parsed_draft.json   to create a consumable json 
+	Ex:  {'6794': {'type': 'draft', 'roster_id': 1, 'price': '10', 'date': 'Sep 1, 2022'}, '6803': 
 
-3. Get draft schedule
-	schedule & draft ID: https://api.sleeper.app/v1/league/<league_id>/drafts
-	xfl 2022 league id 787796366440124416
-	xfl 2022 draft id 787796366440124417 -> gives draft info https://api.sleeper.app/v1/draft/787796366440124417
-	
-4. Draft/Keeper results
-	draft results https://api.sleeper.app/v1/draft/787796366440124417/picks
-	--> I used this for keepers - save as json
-	
+------------------------
+TO UPDATE
+1. Download player pool from URL, save as json (huge file) -> Save to ...
+	https://api.sleeper.app/v1/players/nfl
 
-4. Get rosters
- 	-- Source URL = https://api.sleeper.app/v1/league/650130288072040448/rosters
- 	-- Put the URL in the py file, run get_rosters.py & save to json file
+2. Run parse_players.py -o <output file>  <full players file from step 1>
+		to reduce pool to usable json file -> Save to data/2022/parsed_players.json
+	Ex:  {"5870": {"positions": ["QB"], "team": "NYG", "full_name": "Daniel Jones"}, ...
 
-5. Get transactions
-	App will Download & parse all weekly transactions from
-         https://api.sleeper.app/v1/league/787796366440124416/transactions/<week #>
-    & save to a json file.
-	Set URL in app then Run get_transactions.
+3. Run get_rosters.py -o <output file> 
+		to get current roster (looks ok 2022-11-02)
+	Gets data direct from URL
+	output is dict w key = owner_id, value = player id list
+	- write to data/2022/rosters-<date>.json
+       Ex:  [{"owner_id": "378716407027937280", "roster_id": 1, "players": ["1466", "1476", "1825", "4035", "4098", "421", "4881", "5955", "6083", "6786", "6794", "6803", "6945", "6955", "7525", "7571", "7611", "8121", "8137", "8148", "NE"]},
 
-6. Merge draft + transactions
-    TODO!!!
+4. Run get_transactions.py -o <output file> 
+		(gets entire year) - gets waiver claims & prices, merge w draft, sort in dollar order desc
+	Key = player_id, list of transaction dicts sorted by price hi to low, 
+					each transaction dict has entries for date, price, roster_id, type (draft/waiver) - 
+       merges transactions and drafts, putting results per player in reverse order of price 
+        - write to data/2022/transactions.xlsx
+       Ex:  {"1067": [{"date": "Sep 1, 2022", "price": 1, "roster_id": 5, "type": "draft"}], "1166": 
 
-6. Merge users, players & roster data 
-	merge_teams_and_rosters.py -o <writeable file for current rosters>
+5. Run final.py -o <output file> 
+		to merge teams, rosters and transactions
+     transactions have key=player_id   value = list of transaction dicts sorted in reverse price order
+           	  value transaction ids have roster_id
+     to get rosters, players & curr salaries
 
-7. Combine transactions
-	combine_transactions.py -o <writeable file for all transactions>
-    TODO:  Need to use merged transactions - draft + weekly
-
-
-
-
+         read in user data/2022/users.json
+         read in parsed_player data/2022/parsed_players.json
+         read in roster data  data/2022/rosters-<date>.json
+	 read in transaction data/2022/transactions.json
