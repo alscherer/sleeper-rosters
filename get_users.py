@@ -25,7 +25,6 @@ import sys
 
 # ---------------------------------------------------------
 PLAYER_FILE = "data/parsed-players.json"
-# URL = "https://api.sleeper.app/v1/league/650130288072040448/users"
 URL = "https://api.sleeper.app/v1/league/787796366440124416/users"
 
 # ---------------------------------------------------------
@@ -33,7 +32,7 @@ def get_args():
     """Get command-line arguments"""
 
     parser = argparse.ArgumentParser(
-        description='get-teams <json player file>',
+        description='get_users <json player file>',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('-o',
@@ -59,7 +58,6 @@ def get_user_data(user_data):
     user_name = user_data['display_name']
     user['display_name'] = user_name
 
-    # team_name = user_data['metadata']['team_name'] 
     team_name = (user_data['metadata']).get('team_name', user_name)
     print(team_name)
     if team_name:

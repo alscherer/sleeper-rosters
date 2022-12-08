@@ -64,8 +64,6 @@ def combine_data(users, players, rosters, transactions):
         owner_id = roster_info['owner_id']
 
         roster_data = {} 
-        # roster_data['owner_id'] = owner_id
-        # roster_data['roster_id'] = roster_info['roster_id'] 
         roster_data['owner_name'] = users[owner_id]['display_name']
         roster_data['fantasy_team'] = users[owner_id]['team_name']
         roster_players = roster_info['players']

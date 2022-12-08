@@ -33,7 +33,7 @@ def get_args():
     """Get command-line arguments"""
 
     parser = argparse.ArgumentParser(
-        description='get-transactions <json player file>',
+        description='get_transactions <json player file>',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('-o',

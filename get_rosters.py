@@ -35,7 +35,7 @@ def get_args():
     """Get command-line arguments"""
 
     parser = argparse.ArgumentParser(
-        description='get-rosters <json player file>',
+        description='get_rosters <json player file>',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('-o',

@@ -5,9 +5,6 @@
     https://api.sleeper.app/v1/players/nfl
     & saved to a json file.
 
-    Read this from a file rather than invoking that URL because
-    I don't want to hit their site every time I run this...
-
     Written by: Al Scherer   2022-01-14
 """
 
@@ -18,13 +15,12 @@ import sys
 # ---------------------------------------------------------
 FANTASY_POSNS = { "WR", "QB", "RB", "TE", "K", "DEF" }
 
-
 # ---------------------------------------------------------
 def get_args():
     """Get command-line arguments"""
 
     parser = argparse.ArgumentParser(
-        description='parse-all-players <json player file>',
+        description='parse_players <json player file>',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('file',

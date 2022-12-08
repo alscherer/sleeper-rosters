@@ -4,8 +4,6 @@
     Reduce the draft data to a manageable dict
     Result is a dict - key is the player_id, list of transactions
 
-    Maybe combine the downloads (get-...) with this work but we'll see.
-
     Written by: Al Scherer   2022-01-14
 """
 
