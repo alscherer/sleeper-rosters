@@ -68,11 +68,11 @@ def get_user_data(user_data):
 
 
 # ---------------------------------------------------------
-def get_users():
+def get_users(url):
     ''' Get all user data '''
     users = {} 
     print(f'Getting User Data')
-    response = requests.get(URL)
+    response = requests.get(url)
     if response.status_code != 200:
         print(f'{response} nope')
         sys.exit(1)

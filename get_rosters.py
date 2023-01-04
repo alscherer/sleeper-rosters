@@ -56,11 +56,11 @@ def get_args():
 
 
 # ---------------------------------------------------------
-def get_rosters():
+def get_rosters(url):
     ''' Get all rosters data '''
     roster_list = []
     print(f'Getting Roster Data')
-    response = requests.get(URL)
+    response = requests.get(url)
     if response.status_code != 200:
         print(f'{response} nope')
         sys.exit(1)
@@ -81,7 +81,7 @@ def main() -> None:
     verbose = args.verbose
    
     out_fh = open(args.outfile,'wt') if args.outfile else sys.stdout
-    rosters = get_rosters()
+    rosters = get_rosters(URL)
     if verbose:
         print (json.dumps(rosters, sort_keys=True, indent=2))
     out_fh.write(json.dumps(rosters))

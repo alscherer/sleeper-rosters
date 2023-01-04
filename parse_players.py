@@ -62,14 +62,14 @@ def get_player_data(player_data):
 
 
 # ---------------------------------------------------------
-def parse_players(fileName, verbose):
+def get_players(file_name, verbose):
     '''
     Parse the Sleeper Json file; get just the needed player info
-    :param fileName: the json player file
+    :param file_name: the json player file
     :return: dict of fantasy players
     '''
     player_dict = {}
-    with open(fileName) as json_file:
+    with open(file_name) as json_file:
         data = json.load(json_file)
 
         for player_id, player_data in data.items():
@@ -90,8 +90,8 @@ def main() -> None:
 
     out_fh = open(args.outfile,'wt') if args.outfile else sys.stdout
     if verbose:
-        print (json.dumps(parse_players(args.file, verbose), sort_keys=True, indent=2))
-    out_fh.write(json.dumps(parse_players(args.file, verbose)))
+        print (json.dumps(get_players(args.file, verbose), sort_keys=True, indent=2))
+    out_fh.write(json.dumps(get_players(args.file, verbose)))
 
     print("\nBye, Al!")
     out_fh.close()

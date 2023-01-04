@@ -52,14 +52,6 @@ def get_args():
 
     return args
 
-# ---------------------------------------------------------
-def get_data(file_name):
-    ''' get data from json file '''
-    with open(file_name,'r') as data_file:
-        data = data_file.read()
-
-    details = json.loads(data)
-    return details
 
 # ---------------------------------------------------------
 def is_a_waiver_claim(item):
@@ -83,13 +75,13 @@ def get_waiver_data(item):
 
 
 # ---------------------------------------------------------
-def get_transactions():
+def get_transactions(url):
     ''' Get all transactions for every week this year for this player            '''
     ''' Return dictionary with key = player_id, value = dict of transaction info '''
     transactions = {}
-    for i in range(1,17):
+    for i in range(1,18):
         print(f'Getting Week {i} Transactions')
-        response = requests.get(URL + str(i))
+        response = requests.get(url + str(i))
         if response.status_code != 200:
             print(f'breaking {response.status_code}')
             break
@@ -111,15 +103,11 @@ def main() -> None:
     verbose = args.verbose
    
     out_fh = open(args.outfile,'wt') if args.outfile else sys.stdout
-    transactions = get_transactions()
+    transactions = get_transactions(URL)
     if verbose:
         print (json.dumps(transactions, sort_keys=True, indent=2))
 
-    # out_fh.write(json.dumps(transactions))
-    # print(f'Transactions is a {type(transactions)}')
-    draft = get_data(DRAFT)
-    # print(f'Draft is a {type(draft)}')
-    # print(draft)
+    draft = read_from_file(DRAFT)
 	
     merged = { key:draft.get(key,[])+transactions.get(key,[]) \
                   for key in set(list(draft.keys())+list(transactions.keys())) }

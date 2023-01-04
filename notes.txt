@@ -10,6 +10,7 @@ AFTER DRAFT:  https://api.sleeper.app/v1/draft/<draft_id>
 
 2. Run parse_draft.py -o <output file> 
 		to extract, prepare usable data
+		Note: You'll refer to this draft data later so note the file location, add to all.py
 
 ------------------------
 BEFORE SEASON
