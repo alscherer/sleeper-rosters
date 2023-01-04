@@ -27,6 +27,7 @@ AFTER DRAFT:  https://api.sleeper.app/v1/draft/<draft_id>
 
 2. Run parse_draft.py -o <output file> 
 		to extract, prepare usable data
+		Note: You'll refer to this draft data later so note the file location, add to all.py
 
 ------------------------
 BEFORE SEASON
@@ -39,14 +40,25 @@ AFTER DRAFT
 1. Download draft data from url, save as json - to data/2022/draft-2022.json
 	Ex: https://api.sleeper.app/v1/draft/650130288072040449/picks 
 	 Ex:  {"round":1,"roster_id":1,"player_id":"6794","picked_by":"378716407027937280","pick_no":1,"metadata":{"years_exp":"2","team":"MIN","status":"Active","sport":"nfl","slot":"1","position":"WR","player_id":"6794","number":"18","news_updated":"1646327726661","last_name":"Jefferson","injury_status":"","first_name":"Justin","amount":"10"},"is_keeper":false,"draft_slot":1,"draft_id":"787796366440124417"}
+
 2. Run parse_draft.py -o data/2022/parsed_draft.json   to create a consumable json 
 	Ex:  {'6794': {'type': 'draft', 'roster_id': 1, 'price': '10', 'date': 'Sep 1, 2022'}, '6803': 
 
 ------------------------
-TO UPDATE
-1. Download player pool from URL, save as json (huge file) -> Save to ...
+TO UPDATE ALL IN JUST ONE PYTHON SCRIPT EXECUTION
+	https://api.sleeper.app/v1/players/nfl
+	-- I saved to players-from-site.json in my data dir
 
-2. Run parse_players.py -o <output file> 
+2. Run all.py -o <final output file>  <full players file from step 1>
+	-- I defined output file as "all-out-<date>.json" and then opened that in Excel
+
+------------------------
+TO UPDATE ONE SET OF DATA AT A TIME FOR DEBUGGING
+1. Download player pool from URL, save as json (huge file) -> Save to ...
+	https://api.sleeper.app/v1/players/nfl
+	-- I saved to players-from-site.json in my data dir
+
+2. Run parse_players.py -o <output file>  <full players file from step 1>
 		to reduce pool to usable json file -> Save to data/2022/parsed_players.json
 	Ex:  {"5870": {"positions": ["QB"], "team": "NYG", "full_name": "Daniel Jones"}, ...
 
@@ -71,7 +83,3 @@ TO UPDATE
            	  value transaction ids have roster_id
      to get rosters, players & curr salaries
 
-         read in user data/2022/users.json
-         read in parsed_player data/2022/parsed_players.json
-         read in roster data  data/2022/rosters-<date>.json
-	 read in transaction data/2022/transactions.json
