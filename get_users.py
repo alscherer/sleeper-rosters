@@ -3,6 +3,7 @@
 """
     Download & parse all users from 
 	https://api.sleeper.app/v1/league/650130288072040448/users
+	https://api.sleeper.app/v1/league/919353924837056512/users
     & save to a json file.
     That league # is my "Flex" league 2021.
 
@@ -24,15 +25,17 @@ import sys
 
 
 # ---------------------------------------------------------
-PLAYER_FILE = "data/parsed-players.json"
-URL = "https://api.sleeper.app/v1/league/787796366440124416/users"
+# PLAYER_FILE = "data/parsed-players.json"
+# URL = "https://api.sleeper.app/v1/league/650130288072040448/users"
+# 2022 URL = "https://api.sleeper.app/v1/league/787796366440124416/users"
+URL="https://api.sleeper.app/v1/league/919353924837056512/users"
 
 # ---------------------------------------------------------
 def get_args():
     """Get command-line arguments"""
 
     parser = argparse.ArgumentParser(
-        description='get_users <json player file>',
+        description='get-teams <json player file>',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('-o',
@@ -58,6 +61,7 @@ def get_user_data(user_data):
     user_name = user_data['display_name']
     user['display_name'] = user_name
 
+    # team_name = user_data['metadata']['team_name'] 
     team_name = (user_data['metadata']).get('team_name', user_name)
     print(team_name)
     if team_name:
@@ -68,11 +72,11 @@ def get_user_data(user_data):
 
 
 # ---------------------------------------------------------
-def get_users(url):
+def get_users():
     ''' Get all user data '''
     users = {} 
     print(f'Getting User Data')
-    response = requests.get(url)
+    response = requests.get(URL)
     if response.status_code != 200:
         print(f'{response} nope')
         sys.exit(1)

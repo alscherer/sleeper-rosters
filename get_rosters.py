@@ -7,6 +7,7 @@
     That league # is my "Flex" league 2021.
 	Flex 2021 = 650130288072040448
 	XFL 2022 = 787796366440124416
+	XFL 2023 = 919353924837056512
 
     It's a list of these dicts:
     Example API output:
@@ -28,14 +29,14 @@ import sys
 
 # ---------------------------------------------------------
 PLAYER_FILE = "data/parsed-players.json"
-URL = "https://api.sleeper.app/v1/league/787796366440124416/rosters"
+URL = "https://api.sleeper.app/v1/league/919353924837056512/rosters"
 
 # ---------------------------------------------------------
 def get_args():
     """Get command-line arguments"""
 
     parser = argparse.ArgumentParser(
-        description='get_rosters <json player file>',
+        description='get-rosters <json player file>',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('-o',
@@ -56,11 +57,11 @@ def get_args():
 
 
 # ---------------------------------------------------------
-def get_rosters(url):
+def get_rosters():
     ''' Get all rosters data '''
     roster_list = []
     print(f'Getting Roster Data')
-    response = requests.get(url)
+    response = requests.get(URL)
     if response.status_code != 200:
         print(f'{response} nope')
         sys.exit(1)
@@ -81,7 +82,7 @@ def main() -> None:
     verbose = args.verbose
    
     out_fh = open(args.outfile,'wt') if args.outfile else sys.stdout
-    rosters = get_rosters(URL)
+    rosters = get_rosters()
     if verbose:
         print (json.dumps(rosters, sort_keys=True, indent=2))
     out_fh.write(json.dumps(rosters))

@@ -1,0 +1,37 @@
+
+# My git cmd line cheatsheet
+
+- Step 1: Clone project from github
+	git clone https://github.com/alscherer/sleeper-rosters.git
+		(might have to give token from password)
+
+- Create token - see https://www.geeksforgeeks.org/how-to-generate-personal-access-token-in-github/ 
+
+- To checkout to local dir
+	git checkout .
+
+- After creating new local file, introduce to git:
+	git add all.py
+
+- After editing local file, add to git staging:
+	git add all.py  
+	--> Yes, it's an add then, too
+
+- To remove file(s) from dir & git:
+	git rm Al*
+
+- To check status before commit 
+	git status
+
+- To "commit" changes to local repository w text description
+	git commit -m "Text description"
+
+- To push local repository to github
+	git push
+
+- To rollback staged changes
+	git reset HEAD
+
+
+
+
