@@ -16,10 +16,10 @@ import sys
 
 
 # ---------------------------------------------------------
-USER_DATA = "data/2022/users.json" 
-PLAYER_DATA = "data/2022/parsed_players.json"
-ROSTER_DATA = "data/2022/rosters-20221104.json"
-TRANSACTION_DATA = "data/2022/transactions.json"
+USER_DATA = "data/2023/users.json" 
+PLAYER_DATA = "data/2023/parsed_players.json"
+ROSTER_DATA = "data/2023/rosters-20240101.json"
+TRANSACTION_DATA = "data/2023/transactions.json"
 
 # ---------------------------------------------------------
 def get_args():
@@ -64,6 +64,8 @@ def combine_data(users, players, rosters, transactions):
         owner_id = roster_info['owner_id']
 
         roster_data = {} 
+        # roster_data['owner_id'] = owner_id
+        # roster_data['roster_id'] = roster_info['roster_id'] 
         roster_data['owner_name'] = users[owner_id]['display_name']
         roster_data['fantasy_team'] = users[owner_id]['team_name']
         roster_players = roster_info['players']
