@@ -4,19 +4,26 @@ I play in a "keeper auction" fantasy football league that we run on the Sleeper 
 
 I am new to Python so thought this would be an interesting way to learn Python & get data from the Sleeper APIs, then map players to users, rosters and transactions and do the calculations I need.
 
-This needs plenty of cleanup but does what I wanted.
+This needs cleanup but does what I wanted.
 
-When I get time, I will add unit testing, remove some hard-coded file references and better "pythonize" the code. 
-I'll also create one master python file that runs them all.
+What it does:
+- From Sleeper APIs, read:
+  - Owner info
+  - draft info
+  - rosters 
+  - transactions for all players
+- Summarize all transactions for all players, finding each player's highest-priced transaction
+
+What it doesn't do yet (what I'll add):
+- Unit testing, 
+- Read league info from a config file (so I don't have to hard code every year)
+- Have one master python file that runs them all.
 
 I'm putting it here anyway to save my current, working versions and in case anyone stumbles on this and would like to use any of it.
 
 I built all of these using Python 3.9.  
 I ran them in the sequence noted below and then imported to Excel, which I sent to my league mates.
 I also attached what the final JSON looks like when imported to Excel.
-
-What I haven't done yet as of 11/2024:
-- Read the league ID from a config file so I don't hard-code them in scripts
 
 =================================================
 
