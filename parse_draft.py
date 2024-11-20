@@ -14,8 +14,9 @@ import json
 import sys
 import datetime
 
-DRAFT = 'data/2023/draft-2023.json'
-DRAFT_DATE = 'Aug 28, 2023'
+# DRAFT = 'data/2023/draft-2023.json'
+DRAFT = 'data/2024/draft-2024.json'
+DRAFT_DATE = 'Aug 26, 2024'
 
 # ---------------------------------------------------------
 def get_args():

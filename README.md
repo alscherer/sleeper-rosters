@@ -15,6 +15,9 @@ I built all of these using Python 3.9.
 I ran them in the sequence noted below and then imported to Excel, which I sent to my league mates.
 I also attached what the final JSON looks like when imported to Excel.
 
+What I haven't done yet as of 11/2024:
+- Read the league ID from a config file so I don't hard-code them in scripts
+
 =================================================
 
 Here's my to-do notes I created for myself while building it:

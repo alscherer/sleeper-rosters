@@ -16,10 +16,10 @@ import sys
 
 
 # ---------------------------------------------------------
-USER_DATA = "data/2023/users.json" 
-PLAYER_DATA = "data/2023/parsed_players.json"
-ROSTER_DATA = "data/2023/rosters-20240101.json"
-TRANSACTION_DATA = "data/2023/transactions.json"
+USER_DATA = "data/2024/users.json" 
+PLAYER_DATA = "data/2024/parsed_players.json"
+ROSTER_DATA = "data/2024/rosters-20241101.json"
+TRANSACTION_DATA = "data/2024/transactions.json"
 
 # ---------------------------------------------------------
 def get_args():

@@ -8,6 +8,7 @@
 	Flex 2021 = 650130288072040448
 	XFL 2022 = 787796366440124416
 	XFL 2023 = 919353924837056512
+	XFL 2024 = 1051604880055566336
 
     It's a list of these dicts:
     Example API output:
@@ -28,8 +29,9 @@ import sys
 
 
 # ---------------------------------------------------------
-PLAYER_FILE = "data/parsed-players.json"
-URL = "https://api.sleeper.app/v1/league/919353924837056512/rosters"
+PLAYER_FILE = "data/2024/parsed-players.json"
+# URL = "https://api.sleeper.app/v1/league/919353924837056512/rosters"
+URL = "https://api.sleeper.app/v1/league/1051604880055566336/rosters"
 
 # ---------------------------------------------------------
 def get_args():
